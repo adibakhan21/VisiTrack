@@ -1,52 +1,113 @@
+
 # VisiTrack - Facial Recognition Visitor System
 
-**VisiTrack** is an AI-powered visitor tracking and security dashboard designed to manage entry logs via facial recognition. 
+**VisiTrack** is an AI-powered visitor tracking and security dashboard designed to manage entry logs via facial recognition.
 
 Originally developed at **IIT Kanpur (Public Policy and Opinion Cell)**, this application demonstrates the client-facing interface of a system capable of real-time face detection, demographic analysis, and automated logging.
 
+---
 
 ## 🚀 Features
 
 - **📊 Interactive Dashboard**: Real-time visualization of visitor traffic, category breakdowns (Students, Faculty, Staff), and system health status.
 - **📷 Live Face Scanner**: Integrates with the device webcam to capture visitor images.
-- **🤖 AI Analysis (Gemini Powered)**: 
+- **🤖 AI Analysis (Gemini Powered)**:
   - Uses **Google Gemini 2.5 Flash** to simulate the backend recognition engine.
-  - Analyzes facial features to estimate demographics (Age, Gender, Emotion).
-  - Simulates matching against a secure database with confidence scores.
-- **📝 Visitor Logs**: A searchable and filterable history of all entry attempts (Check-In/Denied).
-- **🗄️ Database Management**: UI for managing registered profiles (simulated interface for the original 5,000+ scraped dataset).
+  - Estimates demographics (Age, Gender, Emotion).
+  - Simulates identity matching with confidence scores.
+- **📝 Visitor Logs**: Searchable and filterable activity log (Check-in / Denied).
+- **🗄️ Database Management**: Interface for browsing registered profiles (simulated 5k+ records).
 
-## 🛠️ Tech Stack
+---
+
+## 📸 Screenshots
+
+### Dashboard View
+![Dashboard](./Screenshot%202025-12-03%20at%2011.21.09.png)
+> Overview panel showing traffic analytics and system status.
+
+---
+
+### Live Face Scanner
+![Scanner](./Screenshot%202025-12-03%20at%2011.21.18.png)
+> Webcam-based facial capture and AI result preview.
+
+---
+
+### Visitor Logs
+![Logs](./Screenshot%202025-12-03%20at%2011.21.26.png)
+> Entry history with filters and status markers.
+
+---
+
+## 🛠 Tech Stack
 
 - **Frontend**: React 19, TypeScript
-- **Styling**: Tailwind CSS, Lucide React (Icons)
-- **Visualization**: Recharts
+- **Styling**: Tailwind CSS, Lucide React
+- **Charts**: Recharts
 - **AI Integration**: Google GenAI SDK (`@google/genai`)
-- **Build Tooling**: Vite (implied environment)
+- **Build Tool**: Vite
+
+---
 
 ## ℹ️ Project Context & Architecture
 
-### Original Backend Implementation
-The full production system was built with a Python-based backend:
-- **Data Acquisition**: Scraped IIT Kanpur's internal search data to build a custom training dataset.
-- **Recognition Engine**: Implemented using **FaceNet**, **dlib**, **HOG**, **SVM**, and **KNN** algorithms achieving 90%+ accuracy.
-- **API**: Flask RESTful APIs handling the heavy lifting of face encoding and matching.
+### Original Backend (Full System)
+The real system was backed by a Python pipeline:
+- **Dataset Building**: Web scraping IIT Kanpur directory data.
+- **Recognition Engine**:
+  - FaceNet
+  - dlib
+  - HOG
+  - SVM
+  - KNN
+- Achieved **90%+ accuracy** on internal data.
+- **Backend**: Flask-based REST APIs for face encoding and verification.
 
-### Current Web Demo
-This repository represents the **Client-Facing Interface**. To enable a fully functional public demo without the heavy GPU requirements of the original FaceNet backend, this version replaces the local inference engine with **Google's Gemini API**.
-- When a face is scanned, the image is sent to Gemini.
-- The LLM acts as the "Recognition Engine," providing demographic analysis and simulated match confidence to mimic the real-world behavior of the original VisiTrack system.
+---
+
+### Current Repository (Web Demo)
+This repository contains only the **Client-Facing Interface**.
+
+To avoid GPU dependency and deployment complexity:
+- Face inference is simulated via **Google Gemini API**
+- Gemini mimics face detection and demographic analysis
+- Match confidence is AI-generated to resemble real behavior
+
+---
 
 ## 📦 Usage
 
-1. **Prerequisites**: Ensure you have a valid `API_KEY` for the Gemini API set in your environment variables.
-2. **Camera Access**: Allow the browser permission to access your webcam for the Face Scanner to function.
-3. **Navigation**: Use the sidebar to switch between the Dashboard analytics, Live Scanner, and Logs view.
+1. Set your Gemini API key:
+   ```bash
+   export API_KEY=your_api_key_here
+````
 
-## 🛡️ Privacy & Permissions
+2. Install dependencies:
 
-- This app requests **Camera** permissions solely for the purpose of the live demonstration.
-- No video feeds are stored permanently in this demo version; images are processed transiently for analysis.
+   ```bash
+   npm install
+   ```
+3. Run locally:
+
+   ```bash
+   npm run dev
+   ```
+4. Allow **camera permission** for the scanner module.
 
 ---
-*Developed by [Adiba Khan] - May 2025*
+
+## 🔐 Privacy & Security
+
+* Webcam access is used **only** for analysis.
+* No image is permanently stored in the demo version.
+* AI responses are session-based only.
+
+---
+
+## 🧑‍💻 Developer
+
+**Adiba Khan**
+*Built in May 2025*
+IIT Kanpur
+
