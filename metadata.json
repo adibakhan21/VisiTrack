@@ -1,0 +1,7 @@
+{
+  "name": "VisiTrack_",
+  "description": "AI-powered facial recognition visitor tracking dashboard simulating real-time entry logs and analytics.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
